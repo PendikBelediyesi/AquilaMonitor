@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"><h1 class="page-header">Server Programs</h1></div>
+        <!-- /.col-lg-12 --> </div>
+    <!-- /.row --> </div>
+
+<div class="row">
+    <div class="col-lg-12" ng-controller="serverProgramEditCtrl">
+        <div class="panel panel-primary">
+            <div class="panel-heading"> Server Program <span ng-if="editMode">Edit</span> <span
+                    ng-if="!editMode">Add</span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form1">
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label ng-show="editMode">Id</label>
+                                    <input ng-show="editMode" name="atId" ng-model="bean.id" class="form-control"
+                                           ng-readonly="true">
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+
+                                    <label>Description</label>
+                                    <input type="text" name="atDesc"
+                                           ng-model="bean.desc" ng-disabled="true"
+                                           ng-maxlength="50" class="form-control"
+                                           placeholder="Server Program Description">
+
+                                    <div class="form-group"><label for="atParent">Server</label>
+                                        <select name="atParent" id="atParent" class="form-control" required
+                                                ng-options="option.desc for option in listServer track by option.id"
+                                                ng-change="descUpdate()"
+                                                ng-model="bean.serverByServerId"></select>
+                                    </div>
+                                    <div class="form-group"><label>Program</label>
+                                        <select required
+                                                ng-options="option.desc for option in listProgram track by option.id"
+                                                ng-model="bean.programByProgramId" ng-change="descUpdate()"
+                                                class="form-control"/></div>
+                                    <div>
+                                        <label for="atStatus">Status</label>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.status" on-label="On"
+                                                       off-label="Off"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+
+                                    <label>Manager Username</label>
+                                    <input type="text" name="atManagerUsername" ng-model="bean.managerUsername"
+                                           ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="Server Manager Username">
+
+                                    <label>Manager Password</label>
+                                    <input type="password" name="atManagerPassword" ng-model="bean.managerPassword"
+                                           ng-minlength="5"
+                                           ng-maxlength="10" class="form-control" placeholder="Server Manager Password">
+
+                                    <div style="padding-top: 10px;margin-top: 10px;">
+                                        <label for="atBackup">Backup Status</label>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isBackupNeeded" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div style="padding-top: 10px;margin-top: 10px;">
+
+                                        <label for="atMonitor">Monitor Status</label>
+                                        <toggle-switch id="atMonitor" name="atMonitor"
+                                                       style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isMonitorNeeded" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                                <button type="submit" class="btn btn-primary" ng-show="!editMode"
+                                        ng-click="insert()">Add
+                                </button>
+                                <button type="submit" class="btn btn-primary" ng-show="editMode"
+                                        ng-click="update()">Update
+                                </button>
+                                <button type="reset" class="btn btn-primary" ui-sref="dashboard.serverprogram">Cancel
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 (nested) --> </div>
+            <!-- /.row (nested) --> </div>
+        <!-- /.panel-body --> </div>
+    <!-- /.panel --> </div>
+<!-- /.col-lg-12 --> </div>

@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"><h1 class="page-header">Applications</h1></div>
+        <!-- /.col-lg-12 --> </div>
+    <!-- /.row --> </div>
+
+<div class="row">
+    <div class="col-lg-12" ng-controller="applicationEditCtrl">
+        <div class="panel panel-primary">
+            <div class="panel-heading"> Application <span ng-if="editMode">Edit</span> <span
+                    ng-if="!editMode">Add</span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form1">
+                            <div class="form-group">
+
+                                <label ng-show="editMode">Id</label>
+                                <input ng-show="editMode" name="atId" ng-model="bean.id" class="form-control"
+                                       ng-readonly="true">
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <label>Description</label>
+                                    <input type="text" name="atDesc" ng-model="bean.desc" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="Application Description"
+                                           required>
+                                <span class="error"
+                                      ng-show="form1.atDesc.$error.required">Application Description Required!</span>
+                                    <label for="atType">Type</label>
+                                    <select name="atType" id="atType" class="form-control"
+                                            ng-options="option.desc for option in listApplicationType track by option.id"
+                                            ng-model="bean.applicationTypeByApplicationTypeId"></select>
+                                    <label>Url</label>
+                                    <input type="text" name="atUrl" ng-model="bean.url" class="form-control"
+                                           placeholder="Application Url" required>
+                                <span class="error"
+                                      ng-show="form1.atUrl.$error.required">Application url Required!</span>
+                                    <label>Port</label>
+                                    <input type="number" name="atPort" ng-model="bean.port"
+                                           ng-maxlength="10" class="form-control"
+                                           placeholder="Application Port Information">
+                                    <label>Path</label>
+                                    <input type="text" name="atPath" ng-model="bean.path"
+                                           class="form-control" placeholder="Application Path" required>
+                                <span class="error"
+                                      ng-show="form1.atPath.$error.required">Application Path Required!</span>
+
+                                    <div style="padding-top: 5px;margin-top: 5px">
+                                        <label for="atStatus">Status</label>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.status" on-label="On"
+                                                       off-label="Off"/>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+
+                                    <label>Hostname</label>
+                                    <input type="text" name="atServicename" ng-model="bean.serviceName" ng-minlength="2"
+                                           ng-maxlength="50" class="form-control" placeholder="Application Service Name"
+                                           required>
+                                <span class="error"
+                                      ng-show="form1.atServicename.$error.required">Application Service Name Required!</span>
+                                    <label for="atServerProgram">Server Program</label>
+                                    <select name="atServerProgram" id="atServerProgram" class="form-control"
+                                            ng-options="option.desc for option in listServerProgram track by option.id"
+                                            ng-model="bean.serverProgramByServerProgramId"></select>
+                                    <label for="atParent">Parent Application</label>
+                                    <select name="atParent" id="atParent" class="form-control"
+                                            ng-options="option.desc for option in listParentApplication track by option.id"
+                                            ng-model="bean.applicationByParentId"></select>
+                                    <label>Manager Username</label>
+                                    <input type="text" name="atManagerUsername" ng-model="bean.managerUsername"
+                                           ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="Server Manager Username">
+
+                                    <label>Manager Password</label>
+                                    <input type="password" name="atManagerPassword" ng-model="bean.managerPassword"
+                                           ng-minlength="5"
+                                           ng-maxlength="10" class="form-control" placeholder="Server Manager Password">
+
+                                    <div style="padding-top: 5px;margin-top: 5px">
+                                        <label for="atBackup">Backup Status</label>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isBackupNeeded" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div style="padding-top: 5px;margin-top: 5px">
+
+                                        <label for="atMonitor">Monitor Status</label>
+                                        <toggle-switch id="atMonitor" name="atMonitor"
+                                                       style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isMonitorNeeded" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12" style="padding-top: 5px;margin-top: 5px">
+                                <button type="submit" class="btn btn-primary" ng-show="!editMode"
+                                        ng-click="insert()">Add
+                                </button>
+                                <button type="submit" class="btn btn-primary" ng-show="editMode"
+                                        ng-click="update()">Update
+                                </button>
+                                <button type="reset" class="btn btn-primary" ui-sref="dashboard.application">Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 (nested) --> </div>
+            <!-- /.row (nested) --> </div>
+        <!-- /.panel-body --> </div>
+    <!-- /.panel --> </div>
+<!-- /.col-lg-12 --> </div>

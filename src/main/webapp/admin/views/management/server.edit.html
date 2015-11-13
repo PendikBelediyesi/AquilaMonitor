@@ -1,0 +1,128 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"><h1 class="page-header">Servers</h1></div>
+        <!-- /.col-lg-12 --> </div>
+    <!-- /.row --> </div>
+
+<div class="row">
+    <div class="col-lg-12" ng-controller="serverEditCtrl">
+        <div class="panel panel-primary">
+            <div class="panel-heading"> Server <span ng-if="editMode">Edit</span> <span
+                    ng-if="!editMode">Add</span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form1">
+                            <div class="form-group">
+
+                                <label ng-show="editMode">Id</label>
+                                <input ng-show="editMode" name="atId" ng-model="bean.id" class="form-control"
+                                       ng-readonly="true">
+
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <label>Description</label>
+                                    <input type="text" name="atDesc" ng-model="bean.desc" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="Server Description"
+                                           required>
+                                <span class="error"
+                                      ng-show="form1.atDesc.$error.required">Server Description Required!</span>
+                                    <label for="atType">Type</label>
+                                    <select name="atType" id="atType" class="form-control"
+                                            ng-options="option.desc for option in listServerType track by option.id"
+                                            ng-model="bean.serverTypeByServerTypeId"></select>
+                                    <label for="atIpAddress">Ip Address</label>
+                                    <select name="atIpAddress" id="atIpAddress" class="form-control"
+                                            ng-options="option.desc for option in listIpAddress track by option.id"
+                                            ng-model="bean.ipAddressByIpAddressId"></select>
+
+                                    <label for="atType">Cpu</label>
+                                    <select name="atType" id="atCpu" class="form-control"
+                                            ng-options="option.desc for option in listCpuType track by option.id"
+                                            ng-model="bean.cpuTypeByCpuTypeId"></select>
+                                    <label>Ram Size</label>
+                                    <input type="number" name="atramsize" ng-model="bean.ramsize" class="form-control"
+                                           placeholder="Server ram size" required>
+                                <span class="error"
+                                      ng-show="form1.atramsize.$error.required">Server ramsize Required!</span>
+
+                                    <label>Hdd Size</label>
+                                    <input type="number" name="atHddsize" ng-model="bean.harddisksize"
+                                           class="form-control" placeholder="Server harddisk size" required>
+                                <span class="error"
+                                      ng-show="form1.atHddsize.$error.required">Server Harddisk Size Required!</span>
+
+                                    <div style="padding-top: 5px;margin-top: 5px">
+                                        <label for="atStatus">Status</label>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.status" on-label="On"
+                                                       off-label="Off"/>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+
+                                    <label>Hostname</label>
+                                    <input type="text" name="atHostname" ng-model="bean.hostname"
+                                           ng-maxlength="50" class="form-control" placeholder="Server Hostname"
+                                           required>
+                                <span class="error"
+                                      ng-show="form1.atHostname.$error.required">Server Hostname Required!</span>
+                                    <label>Location</label>
+                                    <input type="text" name="atLocation" ng-model="bean.location"
+                                           ng-maxlength="50" class="form-control" placeholder="Server Location">
+
+                                    <label for="atOs">Os</label>
+                                    <select name="atOs" id="atOs" class="form-control"
+                                            ng-options="option.desc for option in listOs track by option.id"
+                                            ng-model="bean.osByOsId"></select>
+                                    <label for="atParent">Parent Server</label>
+                                    <select name="atParent" id="atParent" class="form-control"
+                                            ng-options="option.desc for option in listParentServer track by option.id"
+                                            ng-model="bean.serverByParentId"></select>
+                                    <label>Manager Username</label>
+                                    <input type="text" name="atManagerUsername" ng-model="bean.managerUsername"
+                                           ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="Server Manager Username">
+
+                                    <label>Manager Password</label>
+                                    <input type="password" name="atManagerPassword" ng-model="bean.managerPassword"
+                                           ng-minlength="5"
+                                           ng-maxlength="10" class="form-control" placeholder="Server Manager Password">
+
+                                    <div style="padding-top: 5px;margin-top: 5px">
+                                        <label for="atBackup">Backup Status</label>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isBackupNeeded" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div style="padding-top: 5px;margin-top: 5px">
+
+                                        <label for="atMonitor">Monitor Status</label>
+                                        <toggle-switch id="atMonitor" name="atMonitor"
+                                                       style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isMonitorNeeded" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12" style="padding-top: 5px;margin-top: 5px">
+                                <button type="submit" class="btn btn-primary" ng-show="!editMode"
+                                        ng-click="insert()">Add
+                                </button>
+                                <button type="submit" class="btn btn-primary" ng-show="editMode"
+                                        ng-click="update()">Update
+                                </button>
+                                <button type="reset" class="btn btn-primary" ui-sref="dashboard.server">Cancel</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 (nested) --> </div>
+            <!-- /.row (nested) --> </div>
+        <!-- /.panel-body --> </div>
+    <!-- /.panel --> </div>
+<!-- /.col-lg-12 --> </div>

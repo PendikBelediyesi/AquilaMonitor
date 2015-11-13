@@ -1,0 +1,145 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"><h1 class="page-header">Users</h1></div>
+        <!-- /.col-lg-12 --> </div>
+    <!-- /.row --> </div>
+
+<div class="row">
+    <div class="col-lg-12" ng-controller="userEditCtrl">
+        <div class="panel panel-primary">
+            <div class="panel-heading"> User <span ng-if="editMode">Edit</span> <span
+                    ng-if="!editMode">Add</span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form1">
+                            <div class="form-group">
+
+                                <div class="col-lg-12 col-sm-12">
+                                    <label ng-show="editMode">Id</label>
+                                    <input ng-show="editMode" name="atId" ng-model="bean.id" class="form-control"
+                                           ng-readonly="true">
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+
+                                    <label>Name</label>
+
+                                    <input type="text" name="atName" ng-model="bean.name" ng-minlength="2"
+                                           ng-maxlength="50" class="form-control" placeholder="User Name" required>
+                                <span class="error"
+                                      ng-show="form1.atName.$error.required">User Name Required!</span>
+
+                                    <label>Surname</label>
+
+                                    <input type="text" name="atSurname" ng-model="bean.surname" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="User Surname" required>
+                                <span class="error"
+                                      ng-show="form1.atSurname.$error.required">User Surname Required!</span>
+                                    <label>Position</label>
+                                    <input type="text" name="atPosition" ng-model="bean.position" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="User Position">
+                                    <label for="atRole">Role</label>
+                                    <select name="atRole" id="atRole" class="form-control"
+                                            ng-options="option.desc for option in listRole track by option.id"
+                                            ng-model="bean.roleByRoleId"></select>
+
+                                    <div>
+                                        <label>Loginable</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isLogin" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div>
+                                        <label>isSendInfoEmail</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isSendInfoEmail" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div>
+                                        <label>isSendInfoSms</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isSendInfoSms" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div>
+                                        <label>Status</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.status" on-label="On"
+                                                       off-label="Off"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6 col-sm-12">
+
+                                    <label>CallNumber</label>
+                                    <input type="number" name="atcallnumber" ng-model="bean.callnumber" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="User Call Number">
+
+                                    <label>Email</label>
+                                    <input type="email" name="atemail" ng-model="bean.email" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="User Email">
+                                    <label>Username</label>
+
+                                    <input type="text" name="atUsername" ng-model="bean.username" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="User Surname" required>
+                                <span class="error"
+                                      ng-show="form1.atUsername.$error.required">Username Required!</span>
+
+                                    <label>Password</label>
+
+                                    <input type="password" name="atPassword" ng-model="bean.password" ng-minlength="5"
+                                           ng-maxlength="50" class="form-control" placeholder="User Password" required>
+                                <span class="error"
+                                      ng-show="form1.atPassword.$error.required">User Password Required!</span>
+
+                                    <div>
+                                        <label>Server Responsible</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isServerResponsible" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div>
+                                        <label>Program Responsible</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isProgramResponsible" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div>
+                                        <label>Server Program Responsible</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isServerProgramResponsible" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                    <div>
+                                        <label>Application Responsible</label>
+                                        <br/>
+                                        <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                                       ng-model="bean.isApplicationResponsible" on-label="Yes"
+                                                       off-label="No"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-primary" ng-show="!editMode"
+                                    ng-click="insert()">Add
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-show="editMode"
+                                    ng-click="update()">Update
+                            </button>
+                            <button type="reset" class="btn btn-primary" ui-sref="dashboard.user">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 (nested) --> </div>
+            <!-- /.row (nested) --> </div>
+        <!-- /.panel-body --> </div>
+    <!-- /.panel --> </div>
+<!-- /.col-lg-12 --> </div>

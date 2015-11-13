@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"><h1 class="page-header">Responsible</h1></div>
+        <!-- /.col-lg-12 --> </div>
+    <!-- /.row --> </div>
+
+<div class="row">
+    <div class="col-lg-12" ng-controller="responsibleEditCtrl">
+        <div class="panel panel-primary">
+            <div class="panel-heading"> Responsible <span ng-if="editMode">Edit</span> <span
+                    ng-if="!editMode">Add</span></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form1">
+                            <div class="form-group">
+                                <label ng-show="editMode">Id</label>
+                                <input ng-show="editMode" name="atId" ng-model="bean.id" class="form-control"
+                                       ng-readonly="true">
+
+                                <label for="atServer">Server</label>
+                                <select name="atServer" id="atServer" class="form-control"
+                                        ng-options="option.desc for option in listServer track by option.id"
+                                        ng-model="bean.serverByServerId"></select>
+
+                                <label for="atProgram">Program</label>
+                                <select name="atProgram" id="atProgram" class="form-control"
+                                        ng-options="option.desc for option in listProgram track by option.id"
+                                        ng-model="bean.programByProgramId"></select>
+
+                                <label for="atServerProgram">Server Program</label>
+                                <select name="atServerProgram" id="atServerProgram" class="form-control"
+                                        ng-options="option.desc for option in listServerProgram track by option.id"
+                                        ng-model="bean.serverProgramByServerProgramId"></select>
+
+                                <label for="atServerProgram">Application</label>
+                                <select name="atServerProgram" id="atApplication" class="form-control"
+                                        ng-options="option.desc for option in listApplication track by option.id"
+                                        ng-model="bean.applicationByApplicationId"></select>
+
+                                <label for="atUser">User</label>
+                                <select name="atUser" id="atUser" class="form-control"
+                                        ng-options="option.name for option in listUser track by option.id"
+                                        ng-model="bean.userByUserId"></select>
+
+                                <label>Status</label>
+                                <br/>
+                                <toggle-switch style="border: 1px solid #ccc; border-radius: 4px;"
+                                               ng-model="bean.status" on-label="On"
+                                               off-label="Off"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary" ng-show="!editMode"
+                                    ng-click="insert()">Add
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-show="editMode"
+                                    ng-click="update()">Update
+                            </button>
+                            <button type="reset" class="btn btn-primary" ui-sref="dashboard.responsible">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 (nested) --> </div>
+            <!-- /.row (nested) --> </div>
+        <!-- /.panel-body --> </div>
+    <!-- /.panel --> </div>
+<!-- /.col-lg-12 --> </div>

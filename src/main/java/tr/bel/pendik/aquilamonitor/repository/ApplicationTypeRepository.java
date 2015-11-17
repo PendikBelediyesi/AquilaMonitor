@@ -8,4 +8,5 @@ public interface ApplicationTypeRepository extends JpaRepository<ApplicationType
 
     ApplicationTypeEntity findByDesc(String desc);
 
+
 }    

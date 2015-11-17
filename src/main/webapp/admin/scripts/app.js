@@ -764,6 +764,7 @@ angular.module("sbAdminApp", ["oc.lazyLoad", "ui.router", "ui.bootstrap", "angul
             // redirect back to login
             console.log('Redirect To Login');
             ev.preventDefault();
+
             $state.go('login');
             Notification.error('Please Login first!');
             //  $location.path('login');

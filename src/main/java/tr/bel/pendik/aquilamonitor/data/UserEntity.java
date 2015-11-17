@@ -15,6 +15,7 @@ public class UserEntity {
     private String surname;
     private String username;
     private String password;
+    private String aciklama;
     private Long callnumber;
     private String email;
     private String position;
@@ -33,6 +34,17 @@ public class UserEntity {
     private Timestamp createdDate;
     private Timestamp updatedDate;
     private RoleEntity roleByRoleId;
+
+    @Basic
+    @javax.persistence.Column(name = "acik", nullable = true, insertable = true, updatable = true, length = 400)
+
+    public String getAciklama() {
+        return aciklama;
+    }
+
+    public void setAciklama(String aciklama) {
+        this.aciklama = aciklama;
+    }
 
     @Id
     @SequenceGenerator(name = "SEQ_GEN", sequenceName = "SEQ_USER", allocationSize = 1)

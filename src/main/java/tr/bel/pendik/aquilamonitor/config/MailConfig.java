@@ -19,13 +19,13 @@ public class MailConfig {
         javaMailProperties.setProperty("mail.smtp.auth", "true");
         javaMailProperties.setProperty("mail.smtp.starttls.enable", "true");
         javaMailProperties.setProperty("mail.smtp.ssl.trust",
-                "CASHUB.pendik.bel.tr");
+                "CASHUB.xxxx.bel.tr");
         impl.setJavaMailProperties(javaMailProperties);
 
-        impl.setHost("CASHUB.pendik.bel.tr");
+        impl.setHost("CASHUB.xxxxxx.bel.tr");
         // impl.setPort(587);
-        impl.setUsername("digikent@pendik.bel.tr");
-        impl.setPassword("Pendik1");
+        impl.setUsername("xxxx@xxxxxx.bel.tr");
+        impl.setPassword("xxxxx");
 
         return impl;
     }
@@ -33,8 +33,8 @@ public class MailConfig {
     @Bean
     public SimpleMailMessage templateMailMessage() {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom("digikent@pendik.bel.tr");
-        msg.setTo("moyavuz@pendik.bel.tr");
+        msg.setFrom("xxxxxx@pendik.bel.tr");
+        msg.setTo("xxxxx@pendik.bel.tr");
         msg.setSubject("Hata - >");
         msg.setText("<![CDATA[\nDear %s,\n	Mail Content : %s\n	]]>");
         return msg;
